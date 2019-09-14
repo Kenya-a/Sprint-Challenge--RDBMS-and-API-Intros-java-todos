@@ -2,6 +2,9 @@ package com.lambdaschool.javatodos.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -46,7 +49,7 @@ public class User extends Audit
         {
             u.setUser(this);
         }
-        this.userRoles = userRoles
+        this.userRoles = userRoles;
     }
 
 
@@ -77,8 +80,8 @@ public class User extends Audit
 
     public void setPassword(String password)
     {
-        BCrytPasswordEncoder passEncoder = new BCrytPasswordEncoder();
-        this.password = passEncoder.encode(password);
+        BCryptPasswordEncoder = new BCryptPasswordEncoder();
+        this.password = PasswordEncoder.encode(password);
     }
 
     public void setPasswordNoEncrypt(String password)
@@ -118,3 +121,4 @@ public class User extends Audit
         this.todos = todos;
 
     }
+}
