@@ -10,17 +10,22 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+//Put!!
+
 @RestController
 @RequestMapping("/todos")
 public class TodoController {
     @Autowired
     private TodoService todoService;
 
-    //Put
-    // localhost:2019/todos/todoid/{todoid}
-    @PutMapping(value="/todoid/{todoid}", consumes = {"application/json"}, produces = {"application/json"})
-    public ResponseEntity<?> editTodo(@Valid @RequestBody Todo todo, @PathVariable long todoid){
-        todo=todoService.update(todo,todoid);
+    // localhost:2018/todos/todoid/{todoid}
+    @PutMapping(value = "/todoid/{todoid}",
+            consumes = {"application/json"},
+            produces = {"application/json"})
+    public ResponseEntity<?> updateTodo(@Valid
+                                        @RequestBody Todo todo,
+                                        @PathVariable long todoid) {
+        todo = todoService.update(todo, todoid);
         return new ResponseEntity<>(todo, HttpStatus.OK);
     }
 }

@@ -16,9 +16,10 @@ public class Todo {
     private long todoid;
 
     @Column(nullable = false)
-    private String todos;
-    private Date startdate;
-    private boolean complete;
+    private String description;
+
+    private Date datestarted;
+    private boolean completed;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userid",
@@ -29,10 +30,19 @@ public class Todo {
     public Todo() {
     }
 
-    public Todo(String description, User user) {
-        this.todos = todos;
-        this.startdate = startdate;
+    public Todo(String description, Date datestarted,  User user) {
+        this.description = description;
+        this.datestarted = datestarted;
+        this.completed = false;
         this.user = user;
+    }
+
+    public Date getDatestarted() {
+        return datestarted;
+    }
+
+    public void setDatestarted(Date datestarted) {
+        this.datestarted = datestarted;
     }
 
     public long getTodoid() {
@@ -43,12 +53,12 @@ public class Todo {
         this.todoid = todoid;
     }
 
-    public String getTodos() {
-        return todos;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTodos(String todos) {
-        this.todos = todos;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public User getUser() {
@@ -57,5 +67,13 @@ public class Todo {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 }

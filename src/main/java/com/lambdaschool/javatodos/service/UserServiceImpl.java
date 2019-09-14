@@ -1,6 +1,6 @@
 package com.lambdaschool.javatodos.service;
 
-
+import com.lambdaschool.javatodos.models.Todo;
 import com.lambdaschool.javatodos.models.User;
 import com.lambdaschool.javatodos.models.UserRoles;
 import com.lambdaschool.javatodos.repository.RoleRepository;
@@ -37,8 +37,7 @@ public class UserServiceImpl implements UserDetailsService, UserService
         {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-                                                                    //user.getUsername(), user.getPassword(), user.getAuthority()
-        return new org.springframework.security.core.userdetails.User("username", "password", );
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getAuthority());
     }
 
     @Transactional
@@ -130,4 +129,10 @@ public class UserServiceImpl implements UserDetailsService, UserService
 
         return userrepos.save(currentUser);
     }
-}
+
+//    @Override
+//    public User newTodo(User user, Todo todo) {
+//        user.getTodos().add(todo);
+//        return user;
+//    }
+} 

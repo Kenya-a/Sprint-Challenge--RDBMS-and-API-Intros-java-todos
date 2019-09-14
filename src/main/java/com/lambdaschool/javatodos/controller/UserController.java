@@ -30,7 +30,7 @@ public class UserController {
     private TodoService todoService;
 
     //Get
-    //localhost:2019/users/original
+    //localhost:2018/users/original
 
     @GetMapping(value = "/original", produces = {"application/json"})
     @ResponseBody
@@ -58,7 +58,7 @@ public class UserController {
     }
 
     //Adds Todo
-    //localhost:2019/users/todo/{userid}
+    //localhost:2018/users/todo/{userid}
 
     @PostMapping(value="/todo/{userid}",consumes = {"application/json"}, produces = {"application/json"})
     public ResponseEntity<?> addTodo(@Valid
